@@ -1,5 +1,12 @@
 #!/bin/bash 
 
+if [ -z $2 ]; then
+	echo "usage: $0 <device> <partition-number>"
+	echo
+	echo eg. device /dev/sda5 is specified /dev/sda 5
+	exit 1
+fi
+
 which ccrypt 2> /dev/null || exit 2
 which blockdev 2> /dev/null || exit 2
 which hexdump 2> /dev/null || exit 2
