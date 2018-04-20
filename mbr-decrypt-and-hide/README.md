@@ -6,6 +6,8 @@
 
 The imagined use case for this code is to temporarily conceal the existence of data on a block device. It encrypts the partition data into nonsensical random bytes, but also hides the fact that there was a partition there in the first place. The data and scripts required to restore the data partition are embedded in the encrypted blob itself.
 
+It only works with MBR, _not_ with extended partitions.
+
 # hide
 
 First, manually make a note of the partition start sector and sector size. If this numbers are lost, the data cannot be recovered:
