@@ -17,8 +17,24 @@ fi
 
 mbroffset=$((446+(($part-1)*16)))
 
-echo inoffset is $dataoffset 
 echo $pass > ${tmpdir}/.pass
+
+cat <<EOF
+*** WARNING WARNING WARNING ***
+
+This will write $(($size-32)) bytes on $dev at sector offset $dataoffset (byte $outbytesoffset)
+Any existing data will be destroyed!
+
+It will also overwrite the MBR partition entry for $dev$part
+
+EOF
+
+read -p "proceed? (type uppercase YES): " confirm
+if [ -z "$confirm" ] || [ $confirm != "YES" ]; then
+	echo "aborted"
+	exit 1
+fi
+
 sizehex=`hexdump -e '1/4 "%08x"' -s$((dataoffset+8)) -n4 $dev`
 offset=`printf "%d" 0x$sizehex`
 

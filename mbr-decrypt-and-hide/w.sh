@@ -47,7 +47,7 @@ cat <<EOF
 This will write $(($insize+(4*$secsize))) bytes on $DEV at sector offset $OFFSET (byte $outbytesoffset)
 Any existing data will be destroyed!
 
-It will also overwrite the partition entry for $DEV$PART
+It will also zero the MBR partition entry for $DEV$PART
 
 EOF
 

@@ -1,4 +1,4 @@
-# sh-decrypt-and-hide
+# mbr-decrypt-and-hide
 
 ***WARNING WARNING WARNING***
 
@@ -50,7 +50,7 @@ The procedure will:
 * dump and encrypt a partition
 * dump the partition table entry for that partition
 * create an ext4 fs with the two scripts, plus device/partition information, the data offset, encryption password and size of data, and encrypt it
-    - this fs will be 1000 times the sector size.
+    - this fs will be 1000 times the sector size. When encrypted 32 magic ccrypt bytes will be prepended.
 * write this data to the start sector pos of the partition, immediately following each other:
     - the encrypted script/data fs
     - the partition table entry
@@ -77,7 +77,7 @@ The procedure will:
 
 # requirements
 
-This code has been successfully run using:
+This code has been known to successfully run using:
 
 - linux 4.15.13 (ARCH)
 - bash 4.4.19
